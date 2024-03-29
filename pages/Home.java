@@ -1,9 +1,13 @@
 package pages;
 
 
+import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.SystemTray;
 import java.awt.Toolkit;
+import java.awt.TrayIcon;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -32,6 +36,31 @@ public class Home {
         frame.getContentPane().setBackground(new Color(0x222222));
     }
 
+    private void addApplicationImage(){
+        if (SystemTray.isSupported()) {
+            // Load the image for the tray icon
+            Image image = Toolkit.getDefaultToolkit().getImage("logo.jpg"); // Replace "path_to_your_icon.png" with the actual path to your icon
+            
+            // Create the tray icon
+            TrayIcon trayIcon = new TrayIcon(image, "Tooltip"); // Replace "Tooltip" with the tooltip text
+            
+            // Get the system tray
+            SystemTray tray = SystemTray.getSystemTray();
+            System.out.println("images created");
+            
+            try {
+                // Add the tray icon to the system tray
+                tray.add(trayIcon);
+            } catch (AWTException e) {
+                System.err.println("TrayIcon could not be added.");
+            }
+        } else {
+            // System tray is not supported
+            System.err.println("System tray is not supported.");
+        }
+    }
+
+
     private JLabel addTime(){
         
 
@@ -42,7 +71,7 @@ public class Home {
 
 
     public void showWindow(){
-        
+        addApplicationImage();
 
         frame.add(addTime());
         frame.setVisible(true);
