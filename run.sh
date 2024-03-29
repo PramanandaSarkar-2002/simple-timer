@@ -1,3 +1,3 @@
-javac TimeApp.java 
+javac Application.java pages/Home.java
 
-java TimeApp
+java Application pages/Home

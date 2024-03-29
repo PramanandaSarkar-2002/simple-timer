@@ -1,0 +1,1 @@
+1. having problem i try to implement it using java swing

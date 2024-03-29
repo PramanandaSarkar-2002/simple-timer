@@ -1,3 +1,4 @@
+package testing;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -103,9 +104,9 @@ public class TimeApp extends JFrame {
 
     // Method to say time using text-to-speech
     private void sayTime() {
-        String time = String.format("%02d:%02d:%02d", hours, minutes, seconds);
+        // String time = String.format("%02d:%02d:%02d", hours, minutes, seconds);
         try {
-            Runtime.getRuntime().exec("say The time is " + time);
+            Runtime.getRuntime();
         } catch (Exception e) {
             e.printStackTrace();
         }
